@@ -33,7 +33,7 @@ export default function Home() {
           <h2><Link href="/projects" className="link">Projects</Link></h2>
                     <p>
             <a href="https://kalden.ai" target="_blank" rel="noopener noreferrer" className="link">Kalden AI</a> — 
-            AI-powered platform for generating personalized workout plans and tracking progress.
+            AI-powered task manager to help you get things done.
           </p>
                     <p>
             <a href="https://tayloredinstruction.com" target="_blank" rel="noopener noreferrer" className="link">Taylored Instruction</a> — 
