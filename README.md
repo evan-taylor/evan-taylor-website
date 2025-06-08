@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Evan Taylor - Personal Portfolio
+
+A minimal, text-focused personal website built with Next.js and TypeScript. Inspired by clean, modern design principles with emphasis on content and readability.
+
+## About
+
+This is the personal portfolio of Evan Taylor, a Computer Science student at Cal Poly San Luis Obispo. The site showcases projects, background, and contact information in a minimalist design that prioritizes content over flashy visuals.
+
+## Design Philosophy
+
+- **Minimal & Clean**: Black background with white text for maximum readability
+- **Typography-First**: Content is king, with careful attention to spacing and hierarchy  
+- **Fast & Accessible**: Optimized for performance and screen readers
+- **Mobile-Friendly**: Responsive design that works on all devices
+
+## Features
+
+- **Homepage**: Overview of background, projects, and current focus
+- **Projects Page**: Detailed project descriptions with live links
+- **About Page**: Personal journey and timeline
+- **Contact Links**: Email, GitHub, LinkedIn, and Twitter
+
+## Technologies Used
+
+- **Framework**: [Next.js 15](https://nextjs.org/) with App Router
+- **Language**: TypeScript
+- **Styling**: Custom CSS with CSS variables
+- **Font**: [Inter](https://fonts.google.com/specimen/Inter) from Google Fonts
+- **Deployment**: Ready for Vercel, Netlify, or similar platforms
 
 ## Getting Started
 
-First, run the development server:
+1. **Clone the repository**
+   ```bash
+   git clone https://github.com/evan-taylor/evan-taylor-website.git
+   cd evan-taylor-website
+   ```
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+2. **Install dependencies**
+   ```bash
+   npm install
+   ```
+
+3. **Run the development server**
+   ```bash
+   npm run dev
+   ```
+
+4. **Open your browser**
+   
+   Navigate to [http://localhost:3000](http://localhost:3000) to see the website.
+
+## Project Structure
+
+```
+app/
+├── globals.css          # Global styles and CSS variables
+├── layout.tsx          # Root layout with metadata
+├── page.tsx            # Homepage
+├── about/
+│   └── page.tsx        # About page with timeline
+└── projects/
+    └── page.tsx        # Projects showcase
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Customization
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+To adapt this for your own use:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+1. Update personal information in `app/page.tsx`
+2. Modify projects data in `app/projects/page.tsx`
+3. Edit timeline in `app/about/page.tsx`
+4. Update metadata in `app/layout.tsx`
+5. Adjust colors and spacing in `app/globals.css`
 
-## Learn More
+## Deployment
 
-To learn more about Next.js, take a look at the following resources:
+The easiest way to deploy is using [Vercel](https://vercel.com/new):
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+1. Connect your GitHub repository
+2. Vercel will automatically detect Next.js and deploy
+3. Your site will be live with automatic deployments on every push
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Alternatively, you can deploy to Netlify, GitHub Pages, or any platform supporting static sites.
 
-## Deploy on Vercel
+## Contact
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- **Website**: [evan-taylor.com](https://evan-taylor.com)
+- **Email**: [evan@evan-taylor.com](mailto:evan@evan-taylor.com)
+- **GitHub**: [@evan-taylor](https://github.com/evan-taylor)
+- **LinkedIn**: [evan-l-taylor](https://linkedin.com/in/evan-l-taylor)
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+---
+
+Built with ❤️ by Evan Taylor
