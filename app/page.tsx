@@ -9,7 +9,7 @@ export default function Home() {
         <div className="intro">
           <p>
             Computer Science student at Cal Poly, San Luis Obispo. Passionate about software development, 
-            cybersecurity, and building meaningful digital experiences. Founded Taylored Instruction LLC, 
+            cybersecurity, and building meaningful digital experiences. Founded <a href="https://tayloredinstruction.com" target="_blank" rel="noopener noreferrer" className="link">Taylored Instruction LLC</a>, 
             an American Red Cross Training Site.
           </p>
         </div>
