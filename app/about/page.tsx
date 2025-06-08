@@ -31,9 +31,9 @@ export default function About() {
         <h1>About</h1>
         <div className="intro">
           <p>
-            Hi, I&apos;m Evan. I&apos;ve been passionate about computers and programming since middle school. 
-            My journey has taken me from teaching myself how to code in 7th grade to founding 
-            Taylored Instruction LLC, where I combine my leadership skills with my entrepreneurial spirit.
+            Hi, I&apos;m Evan. I&apos;ve been passionate about computers and programming since elementary school. 
+            My journey has taken me from teaching myself how to code in 6th grade to founding 
+            Taylored Instruction LLC, where I combine my technical skills with leadership and industry experience.
           </p>
         </div>
 
@@ -41,9 +41,9 @@ export default function About() {
         <div className="now-section">
           <h2>Background</h2>
           <p>
-            I started programming in 7th grade and have been fascinated by the intersection of 
+            I started programming in 6th grade and have been fascinated by the intersection of 
             technology and human experience ever since. Currently studying Computer Science at 
-            Cal Poly San Luis Obispo with a focus on privacy, security, and entrepreneurship.
+            Cal Poly San Luis Obispo with a focus on entrepreneurship.
           </p>
           <p>
             Beyond academics, I&apos;m an entrepreneur and leader. As a former varsity swim team captain 
@@ -74,7 +74,8 @@ export default function About() {
           <p>
             I&apos;m currently developing skills in machine learning, web development, and cybersecurity. 
             My coursework includes algorithms, data structures, and systems programming, while my 
-            personal projects explore full-stack development and data analysis.
+            personal projects explore full-stack development and data analysis. I am also learning about entrepreneurship, 
+            and I am currently working on a project to help students get things done.
           </p>
           <p>
             Through Taylored Instruction, I&apos;m learning valuable lessons about running a business, 

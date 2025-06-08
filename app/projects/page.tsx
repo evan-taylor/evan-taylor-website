@@ -13,9 +13,9 @@ export default function Projects() {
     {
       title: "Kalden AI",
       year: "2025",
-      description: "Developed a business management platform for the operation of my American Red Cross and American Heart Association Training Site. Includes detailed resources for instructors, self-serve certification ordering, and a comprehensive dashboard for managing operations.",
+      description: "Right now, I am building Kalden, an AI task manager that helps you get things done. Currently, I am focused on students, developing a Canvas integration to automatically import and schedule time for assignments, calendar sync, and a robust scheduling infrastructure.",
       tech: ["Next.js", "OpenAI", "Postgres"],
-      status: "Live",
+      status: "In Development",
       url: "https://kalden.ai"
     },
     {
