@@ -65,9 +65,7 @@ export default function Home() {
             <a href="mailto:evan@evan-taylor.com" className="link">evan@evan-taylor.com</a>
           </p>
           <p>
-            <a href="https://github.com/evan-taylor" target="_blank" className="link">GitHub</a> — 
-            <a href="https://www.linkedin.com/in/evan-l-taylor/" target="_blank" className="link">LinkedIn</a> — 
-            <a href="https://twitter.com/evantaylor1104" target="_blank" className="link">Twitter</a>
+            <a href="https://github.com/evan-taylor" target="_blank" className="link">GitHub</a> — <a href="https://www.linkedin.com/in/evan-l-taylor/" target="_blank" className="link">LinkedIn</a> — <a href="https://twitter.com/evantaylor1104" target="_blank" className="link">Twitter</a>
           </p>
           <p style={{color: 'var(--muted)', fontSize: '14px', marginTop: '16px'}}>
             San Luis Obispo, CA / Vancouver, WA
