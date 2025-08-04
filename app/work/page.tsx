@@ -1,7 +1,23 @@
 import Link from 'next/link';
 
 export default function Projects() {
-  const projects = [
+  const work = [
+    {
+      title: "Software Development Intern - Manage Inc",
+      year: "2024-Present",
+      description: "Developing a mobile application that interfaces with IBM Series I systems, implementing secure authentication protocols and creating a push notification system for configurable enterprise events. Working directly with legacy systems while building modern mobile solutions.",
+      tech: ["React Native", "IBM i", "Node.js", "Push Notifications"],
+      status: "Current Role",
+      url: "https://manageinc.com"
+    },
+    {
+      title: "Software Development Intern - Hovn",
+      year: "2024-Present",
+      description: "Contributing to a medical training registration and automation platform, streamlining the process for healthcare professionals to register for and manage training certifications. Working on both frontend and backend features to improve user experience and system efficiency.",
+      tech: ["React", "Node.js", "PostgreSQL", "REST APIs"],
+      status: "Current Role",
+      url: "https://hovn.com"
+    },
     {
       title: "Taylored Instruction Dashboard",
       year: "2024",
@@ -32,40 +48,39 @@ export default function Projects() {
     <div className="container">
       <main className="main-section">
         {/* Header */}
-        <h1>Projects</h1>
+        <h1>Things I&apos;ve Worked On</h1>
         <div className="intro">
           <p>
-            A collection of software projects spanning web development, machine learning, 
-            and business applications. Each project represents exploration of new technologies 
-            and problem-solving approaches.
+            A collection of internships, projects, and experiences that have shaped my journey 
+            in software development. Each represents unique challenges and learning opportunities.
           </p>
         </div>
 
-        {/* Projects */}
-        {projects.map((project, index) => (
+        {/* Work Experience and Projects */}
+        {work.map((item, index) => (
           <div key={index} className="now-section">
             <div style={{display: 'flex', justifyContent: 'space-between', alignItems: 'baseline', marginBottom: '16px'}}>
               <a 
-                href={project.url} 
+                href={item.url} 
                 target="_blank" 
                 rel="noopener noreferrer"
                 className="link"
                 style={{marginBottom: '0', textTransform: 'none', letterSpacing: '0', fontSize: '20px', color: 'var(--foreground)', textDecoration: 'none'}}
               >
-                {project.title}
+                {item.title}
               </a>
               <div style={{textAlign: 'right'}}>
-                <div style={{color: 'var(--muted)', fontSize: '14px'}}>{project.year}</div>
-                <div style={{color: 'var(--muted)', fontSize: '12px', marginTop: '4px'}}>{project.status}</div>
+                <div style={{color: 'var(--muted)', fontSize: '14px'}}>{item.year}</div>
+                <div style={{color: 'var(--muted)', fontSize: '12px', marginTop: '4px'}}>{item.status}</div>
               </div>
             </div>
             
             <p style={{marginBottom: '24px'}}>
-              {project.description}
+              {item.description}
             </p>
             
             <p style={{color: 'var(--muted)', fontSize: '14px'}}>
-              {project.tech.join(' • ')}
+              {item.tech.join(' • ')}
             </p>
           </div>
         ))}

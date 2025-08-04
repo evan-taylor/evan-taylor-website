@@ -10,7 +10,7 @@ export default function Home() {
           <p>
             Computer Science student at Cal Poly, San Luis Obispo. Passionate about software development, 
             cybersecurity, and building meaningful digital experiences. Founded <a href="https://tayloredinstruction.com" target="_blank" rel="noopener noreferrer" className="link">Taylored Instruction LLC</a>, 
-            an American Red Cross and American Heart Association Training Site.
+            an American Red Cross and American Heart Association Training Site, and <a href="https://taylorlabs.co" target="_blank" rel="noopener noreferrer" className="link">Taylor Labs</a>, a company focused on developing innovative solutions and beautiful websites.
           </p>
         </div>
 
@@ -24,7 +24,7 @@ export default function Home() {
           <p>
             Beyond academics, I&apos;m an entrepreneur and very involved in the aquatics and medical training industries. Through 
             Taylored Instruction, I combine my technical skills with leadership and industryexperience, 
-            teaching all sorts of different courses in my community.
+            teaching all sorts of medical and aquatic courses across the PNW.
           </p>
         </div>
 
