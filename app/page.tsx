@@ -1,4 +1,4 @@
-import Link from 'next/link';
+import Link from "next/link";
 
 export default function Home() {
   return (
@@ -8,40 +8,96 @@ export default function Home() {
         <h1>Evan Taylor</h1>
         <div className="intro">
           <p>
-            Computer Science student at Cal Poly, San Luis Obispo. Passionate about software development, 
-            cybersecurity, and building meaningful digital experiences. Founded <a href="https://tayloredinstruction.com" target="_blank" rel="noopener noreferrer" className="link">Taylored Instruction LLC</a>, 
-            an American Red Cross and American Heart Association Training Site, and <a href="https://taylorlabs.co" target="_blank" rel="noopener noreferrer" className="link">Taylor Labs</a>, a company focused on developing innovative solutions and beautiful websites.
+            Computer Science student at Cal Poly, San Luis Obispo. Passionate
+            about software development, cybersecurity, and building meaningful
+            digital experiences. Founded{" "}
+            <a
+              href="https://tayloredinstruction.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              Taylored Instruction LLC
+            </a>
+            , an American Red Cross and American Heart Association Training
+            Site, and{" "}
+            <a
+              href="https://taylorlabs.co"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              Taylor Labs
+            </a>
+            , a company focused on developing innovative solutions and beautiful
+            websites.
           </p>
         </div>
 
         {/* About */}
         <div className="now-section">
-          <h2><Link href="/about" className="link">About</Link></h2>
+          <h2>
+            <Link href="/about" className="link">
+              About
+            </Link>
+          </h2>
           <p>
-            I&apos;ve been passionate about computers and programming since elementary school, and I taught myself 
-            to code in 6th grade. Currently studying Computer Science, plus a minor in Entrepreneurship.
+            I&apos;ve been passionate about computers and programming since
+            elementary school, and I taught myself to code in 6th grade.
+            Currently studying Computer Science, plus a minor in
+            Entrepreneurship.
           </p>
           <p>
-            Beyond academics, I&apos;m an entrepreneur and very involved in the aquatics and medical training industries. Through 
-            Taylored Instruction, I combine my technical skills with leadership and industryexperience, 
-            teaching all sorts of medical and aquatic courses across the PNW.
+            Beyond academics, I&apos;m an entrepreneur and very involved in the
+            aquatics and medical training industries. Through Taylored
+            Instruction, I combine my technical skills with leadership and
+            industryexperience, teaching all sorts of medical and aquatic
+            courses across the PNW.
           </p>
         </div>
 
-        {/* Projects */}
+        {/* Work */}
         <div className="now-section">
-          <h2><Link href="/projects" className="link">Projects</Link></h2>
-                    <p>
-            <a href="https://kalden.ai" target="_blank" rel="noopener noreferrer" className="link">Kalden AI</a> — 
-            AI-powered task manager to help you get things done.
-          </p>
-                    <p>
-            <a href="https://tayloredinstruction.com" target="_blank" rel="noopener noreferrer" className="link">Taylored Instruction</a> — 
-            Business management system for my American Red Cross and American Heart Association Training Site operations including detailed resources for instructors, self-serve certification ordering, and a comprehensive dashboard for managing operations.
+          <h2>
+            <Link href="/projects" className="link">
+              Work
+            </Link>
+          </h2>
+          <p>
+            <a
+              href="https://manageinc.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              Manage Inc
+            </a>{" "}
+            — Software Development Intern. Building mobile app for IBM Series i
+            integration with authentication and push notifications.
           </p>
           <p>
-            <a href="https://evan-taylor.com" target="_blank" rel="noopener noreferrer" className="link">Personal Portfolio</a> — 
-            Designed and developed using Next.js, Tailwind CSS, and modern web technologies with focus on performance.
+            <a
+              href="https://hovn.app"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              Hovn
+            </a>{" "}
+            — Software Development Intern. Developing medical training
+            registration and automation platform.
+          </p>
+          <p>
+            <a
+              href="https://tayloredinstruction.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              Taylored Instruction
+            </a>{" "}
+            — Created business management platform for my training site
+            operations.
           </p>
         </div>
 
@@ -49,12 +105,14 @@ export default function Home() {
         <div className="now-section">
           <h2>Currently</h2>
           <p>
-            Developing skills in web development, software development, and security. 
-            Working with JavaScript, React, Python, and exploring privacy-focused technologies.
+            Developing skills in web development, software development, and
+            security. Working with JavaScript, React, Python, and exploring
+            privacy-focused technologies.
           </p>
           <p>
-            Learning algorithms, data structures, and systems programming at Cal Poly while 
-            building real-world applications and running my training business.
+            Learning algorithms, data structures, and systems programming at Cal
+            Poly while building real-world applications and running my training
+            business.
           </p>
         </div>
 
@@ -62,12 +120,42 @@ export default function Home() {
         <div>
           <h2>Connect</h2>
           <p>
-            <a href="mailto:evan@evan-taylor.com" className="link">evan@evan-taylor.com</a>
+            <a href="mailto:evan@evan-taylor.com" className="link">
+              evan@evan-taylor.com
+            </a>
           </p>
           <p>
-            <a href="https://github.com/evan-taylor" target="_blank" className="link">GitHub</a> — <a href="https://www.linkedin.com/in/evan-l-taylor/" target="_blank" className="link">LinkedIn</a> — <a href="https://twitter.com/evantaylor1104" target="_blank" className="link">Twitter</a>
+            <a
+              href="https://github.com/evan-taylor"
+              target="_blank"
+              className="link"
+            >
+              GitHub
+            </a>{" "}
+            —{" "}
+            <a
+              href="https://www.linkedin.com/in/evan-l-taylor/"
+              target="_blank"
+              className="link"
+            >
+              LinkedIn
+            </a>{" "}
+            —{" "}
+            <a
+              href="https://twitter.com/evantaylor1104"
+              target="_blank"
+              className="link"
+            >
+              Twitter
+            </a>
           </p>
-          <p style={{color: 'var(--muted)', fontSize: '14px', marginTop: '16px'}}>
+          <p
+            style={{
+              color: "var(--muted)",
+              fontSize: "14px",
+              marginTop: "16px",
+            }}
+          >
             San Luis Obispo, CA / Vancouver, WA
           </p>
         </div>
