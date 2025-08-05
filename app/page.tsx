@@ -65,18 +65,6 @@ export default function Home() {
           </h2>
           <p>
             <a
-              href="https://manageinc.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link"
-            >
-              Manage Inc
-            </a>{" "}
-            — Software Development Intern. Building mobile app for IBM Series i
-            integration with authentication and push notifications.
-          </p>
-          <p>
-            <a
               href="https://hovn.app"
               target="_blank"
               rel="noopener noreferrer"
@@ -86,6 +74,18 @@ export default function Home() {
             </a>{" "}
             — Software Development Intern. Developing medical training
             registration and automation platform.
+          </p>
+          <p>
+            <a
+              href="https://manageinc.com"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="link"
+            >
+              Manage Inc
+            </a>{" "}
+            — Intern. Building mobile app for IBM Series i integration with
+            authentication and push notifications.
           </p>
           <p>
             <a
