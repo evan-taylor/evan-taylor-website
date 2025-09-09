@@ -12,20 +12,20 @@ export default function Home() {
             about software development, cybersecurity, and building meaningful
             digital experiences. Founded{" "}
             <a
-              href="https://tayloredinstruction.com"
-              target="_blank"
-              rel="noopener noreferrer"
               className="link"
+              href="https://tayloredinstruction.com"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Taylored Instruction LLC
             </a>
             , an American Red Cross and American Heart Association Training
             Site, and{" "}
             <a
-              href="https://taylorlabs.co"
-              target="_blank"
-              rel="noopener noreferrer"
               className="link"
+              href="https://taylorlabs.co"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Taylor Labs
             </a>
@@ -37,7 +37,7 @@ export default function Home() {
         {/* About */}
         <div className="now-section">
           <h2>
-            <Link href="/about" className="link">
+            <Link className="link" href="/about">
               About
             </Link>
           </h2>
@@ -59,16 +59,16 @@ export default function Home() {
         {/* Work */}
         <div className="now-section">
           <h2>
-            <Link href="/projects" className="link">
+            <Link className="link" href="/projects">
               Work
             </Link>
           </h2>
           <p>
             <a
-              href="https://hovn.app"
-              target="_blank"
-              rel="noopener noreferrer"
               className="link"
+              href="https://hovn.app"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Hovn
             </a>{" "}
@@ -77,10 +77,10 @@ export default function Home() {
           </p>
           <p>
             <a
-              href="https://manageinc.com"
-              target="_blank"
-              rel="noopener noreferrer"
               className="link"
+              href="https://manageinc.com"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Manage Inc
             </a>{" "}
@@ -89,10 +89,10 @@ export default function Home() {
           </p>
           <p>
             <a
-              href="https://tayloredinstruction.com"
-              target="_blank"
-              rel="noopener noreferrer"
               className="link"
+              href="https://tayloredinstruction.com"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               Taylored Instruction
             </a>{" "}
@@ -120,31 +120,34 @@ export default function Home() {
         <div>
           <h2>Connect</h2>
           <p>
-            <a href="mailto:evan@evan-taylor.com" className="link">
+            <a className="link" href="mailto:evan@evan-taylor.com">
               evan@evan-taylor.com
             </a>
           </p>
           <p>
             <a
-              href="https://github.com/evan-taylor"
-              target="_blank"
               className="link"
+              href="https://github.com/evan-taylor"
+              rel="noopener"
+              target="_blank"
             >
               GitHub
             </a>{" "}
             —{" "}
             <a
-              href="https://www.linkedin.com/in/evan-l-taylor/"
-              target="_blank"
               className="link"
+              href="https://www.linkedin.com/in/evan-l-taylor/"
+              rel="noopener"
+              target="_blank"
             >
               LinkedIn
             </a>{" "}
             —{" "}
             <a
-              href="https://twitter.com/evantaylor1104"
-              target="_blank"
               className="link"
+              href="https://twitter.com/evantaylor1104"
+              rel="noopener"
+              target="_blank"
             >
               Twitter
             </a>

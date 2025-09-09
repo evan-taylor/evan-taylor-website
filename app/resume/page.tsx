@@ -8,7 +8,7 @@ export default function Resume() {
         <h1>Evan Taylor</h1>
         <div className="intro">
           <p style={{ marginBottom: "8px" }}>
-            <a href="mailto:evan@evntylr.com" className="link">
+            <a className="link" href="mailto:evan@evntylr.com">
               evan@evntylr.com
             </a>{" "}
             • (360) 904-2901
@@ -18,10 +18,10 @@ export default function Resume() {
           </p>
           <p>
             <a
-              href="/Evan%20Taylor.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
               className="link"
+              href="/Evan%20Taylor.pdf"
+              rel="noopener noreferrer"
+              target="_blank"
             >
               📄 View PDF Resume
             </a>
@@ -207,7 +207,7 @@ export default function Resume() {
         {/* Back */}
         <div>
           <p>
-            <Link href="/" className="link">
+            <Link className="link" href="/">
               ← Back to home
             </Link>
           </p>

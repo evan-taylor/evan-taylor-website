@@ -3,10 +3,11 @@ import "./globals.css";
 
 export const metadata: Metadata = {
   title: "Evan Taylor",
-  description: "Computer Science student at Cal Poly, San Luis Obispo. Building software and exploring technology.",
+  description:
+    "Computer Science student at Cal Poly, San Luis Obispo. Building software and exploring technology.",
   other: {
-    "apple-mobile-web-app-title": "Evan Taylor"
-  }
+    "apple-mobile-web-app-title": "Evan Taylor",
+  },
 };
 
 export default function RootLayout({
@@ -16,9 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className="antialiased">
-        {children}
-      </body>
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

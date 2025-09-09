@@ -46,7 +46,7 @@ export default function Projects() {
 
         {/* Work Experience and Projects */}
         {work.map((item, index) => (
-          <div key={index} className="now-section">
+          <div className="now-section" key={index}>
             <div
               style={{
                 display: "flex",
@@ -56,10 +56,9 @@ export default function Projects() {
               }}
             >
               <a
-                href={item.url}
-                target="_blank"
-                rel="noopener noreferrer"
                 className="link"
+                href={item.url}
+                rel="noopener noreferrer"
                 style={{
                   marginBottom: "0",
                   textTransform: "none",
@@ -68,6 +67,7 @@ export default function Projects() {
                   color: "var(--foreground)",
                   textDecoration: "none",
                 }}
+                target="_blank"
               >
                 {item.title}
               </a>
@@ -98,7 +98,7 @@ export default function Projects() {
         {/* Back */}
         <div>
           <p>
-            <Link href="/" className="link">
+            <Link className="link" href="/">
               ← Back to home
             </Link>
           </p>
