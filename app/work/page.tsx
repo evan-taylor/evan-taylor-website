@@ -3,49 +3,31 @@ import Link from "next/link";
 export default function Projects() {
   const work = [
     {
-      title: "Software Development Intern - Manage Inc",
-      year: "2024-Present",
-      description:
-        "Developing a mobile application that interfaces with IBM Series I systems, implementing secure authentication protocols and creating a push notification system for configurable enterprise events. Working directly with legacy systems while building modern mobile solutions.",
-      tech: ["React Native", "IBM i", "Node.js", "Push Notifications"],
-      status: "Current Role",
-      url: "https://manageinc.com",
-    },
-    {
       title: "Software Development Intern - Hovn",
-      year: "2024-Present",
+      year: "June 2025 – Present",
       description:
-        "Contributing to a medical training registration and automation platform, streamlining the process for healthcare professionals to register for and manage training certifications. Working on both frontend and backend features to improve user experience and system efficiency.",
-      tech: ["React", "Node.js", "PostgreSQL", "REST APIs"],
+        "Contributed to full-stack development across the Hovn.app platform — building features, fixing bugs, supporting customers, and optimizing code to improve performance and user experience. Collaborated closely with founders to plan and deliver roadmap-driven features.",
+      tech: ["React", "Node.js", "PostgreSQL", "Full-stack"],
       status: "Current Role",
       url: "https://hovn.app",
     },
     {
-      title: "Taylored Instruction Dashboard",
-      year: "2024",
+      title: "Intern - Manage Incorporated",
+      year: "June 2025 – September 2025",
       description:
-        "Developed a business management platform for the operation of my American Red Cross and American Heart Association Training Site. Includes detailed resources for instructors, self-serve certification ordering, and a comprehensive dashboard for managing operations.",
-      tech: ["Next.js", "Tailwind CSS", "PostgreSQL"],
-      status: "Live",
+        "Developed a mobile app integrating with IBM Series i systems, implementing secure authentication, user management, and a configurable push notification system for urgent events. Built modern mobile solutions interfacing with legacy systems.",
+      tech: ["React Native", "IBM i", "Node.js", "Push notifications"],
+      status: "Completed",
+      url: "https://manageinc.com",
+    },
+    {
+      title: "Founder - Taylored Instruction LLC",
+      year: "May 2023 – Present",
+      description:
+        "Operate an ARC/AHA-authorized training site, building and maintaining scheduling, registration, and certification workflows. Implemented automations (Stripe, email/SMS reminders, roster/checklist tracking, and sub-instructor compliance tracking) to reduce no-shows and streamline enrollment.",
+      tech: ["Stripe", "Email/SMS", "Automation", "Operations"],
+      status: "Ongoing",
       url: "https://tayloredinstruction.com",
-    },
-    {
-      title: "Kalden AI",
-      year: "2025",
-      description:
-        "Right now, I am building Kalden, an AI task manager that helps you get things done. Currently, I am focused on students, developing a Canvas integration to automatically import and schedule time for assignments, calendar sync, and a robust scheduling infrastructure.",
-      tech: ["Next.js", "OpenAI", "Postgres"],
-      status: "In Development",
-      url: "https://kalden.ai",
-    },
-    {
-      title: "Personal Portfolio Website",
-      year: "2024",
-      description:
-        "Designed and developed a personal portfolio using modern web technologies with focus on performance, accessibility, and clean design. Features responsive layouts and optimized loading.",
-      tech: ["SvelteKit", "Tailwind CSS", "JavaScript", "Vercel"],
-      status: "Live",
-      url: "https://evan-taylor.com",
     },
   ];
 
@@ -53,7 +35,7 @@ export default function Projects() {
     <div className="container">
       <main className="main-section">
         {/* Header */}
-        <h1>Things I&apos;ve Worked On</h1>
+        <h1>Work Experience</h1>
         <div className="intro">
           <p>
             A collection of internships, projects, and experiences that have
