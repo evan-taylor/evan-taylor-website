@@ -364,7 +364,7 @@ export const cards: CardData[] = [
       <div className="space-y-8 text-white">
         <div className="space-y-3">
           <h3 className="text-3xl md:text-4xl font-bold leading-tight">
-            When I'm
+            When I'm not working, I love to spend time outdoors!
           </h3>
         </div>
 
