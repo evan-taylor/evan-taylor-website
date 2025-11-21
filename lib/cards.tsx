@@ -88,6 +88,30 @@ export const cards: CardData[] = [
     textColor: "#ffffff",
     longDescription: (
       <div className="space-y-10">
+        <div className="flex justify-end">
+          <a
+            href="/Evan-Taylor.pdf"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="inline-flex items-center gap-2 bg-white text-black font-bold px-6 py-3 rounded-full hover:bg-blue-50 hover:scale-105 transition-all shadow-lg shadow-white/10"
+          >
+            <span>Download Resume</span>
+            <svg
+              width="16"
+              height="16"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="3"
+              strokeLinecap="round"
+              strokeLinejoin="round"
+            >
+              <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
+              <polyline points="7 10 12 15 17 10"></polyline>
+              <line x1="12" y1="15" x2="12" y2="3"></line>
+            </svg>
+          </a>
+        </div>
         {[
           {
             title: "Software Development Intern",
@@ -206,18 +230,19 @@ export const cards: CardData[] = [
       </div>
     ),
   },
+  /*
   {
     id: "resume",
-    title: "Toolkit",
-    subtitle: "Skills & Expertise",
-    description: "The technologies and tools I use to build.",
-    color: "#4b5563", // Gray-600 (darker for better contrast)
+    title: "Resume",
+    subtitle: "Curriculum Vitae",
+    description: "My professional background, education, and skills.",
+    color: "#262626",
     textColor: "#ffffff",
     longDescription: (
-      <div>
-        <div className="mb-8">
-          <a
-            href="/Evan%20Taylor.pdf"
+      <div className="h-full flex flex-col min-h-[60vh]">
+        <div className="flex justify-end mb-6">
+             <a
+            href="/Evan-Taylor.pdf"
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center gap-2 bg-white text-black font-bold px-6 py-3 rounded-full hover:bg-blue-50 hover:scale-105 transition-all shadow-lg shadow-white/10"
@@ -239,67 +264,86 @@ export const cards: CardData[] = [
             </svg>
           </a>
         </div>
+        <div className="flex-1 w-full bg-white/5 rounded-xl overflow-hidden border border-white/10">
+           <iframe 
+             src="/Evan-Taylor.pdf" 
+             className="w-full h-full min-h-[600px]" 
+             title="Resume PDF"
+           />
+        </div>
+      </div>
+    )
+  },
+  */
+  /*
+  {
+    id: "stack",
+    title: "Coding Stack",
+    subtitle: "Day-to-day setup",
+    description: "The dependable tools I reach for when shipping.",
+    color: "#4b5563", // Gray-600 (darker for better contrast)
+    textColor: "#ffffff",
+    longDescription: (
+      <div className="space-y-10 text-white">
+        <div className="flex flex-col gap-4">
+          <p className="text-lg leading-relaxed text-gray-200 max-w-2xl">
+            I keep the stack boring on purpose. Reliable languages, a lean toolchain,
+            and a workflow that gets prototypes into production without fighting the setup.
+          </p>
+        </div>
 
-        <div className="grid grid-cols-1 gap-8">
+        <div className="grid gap-8 md:grid-cols-2">
           <div>
-            <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-white">
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
               <span className="w-2 h-8 bg-blue-500 rounded-full"></span>
-              Core Technologies
+              Languages & frameworks
             </h3>
-            <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+            <ul className="space-y-3 text-gray-300">
               {[
-                "Python",
-                "Java",
-                "TypeScript",
-                "React",
-                "Node.js",
-                "Next.js",
-                "PostgreSQL",
-                "C",
-                "Git",
-              ].map((skill) => (
-                <div
-                  key={skill}
-                  className="bg-black/20 border border-white/10 p-3 rounded-lg text-center font-medium text-gray-300 hover:border-blue-500/50 transition-colors cursor-default"
-                >
-                  {skill}
-                </div>
+                {
+                  name: "TypeScript + Next.js",
+                  note: "Default choice for product UI, server components, and experiments.",
+                },
+                {
+                  name: "Python",
+                  note: "Fast way to script integrations, data cleanup, and internal tooling.",
+                },
+                {
+                  name: "PostgreSQL",
+                  note: "Structured data lives here—simple schemas, honest migrations.",
+                },
+              ].map((item) => (
+                <li key={item.name} className="flex flex-col">
+                  <span className="font-semibold text-white">{item.name}</span>
+                  <span className="text-sm text-gray-400">{item.note}</span>
+                </li>
               ))}
-            </div>
+            </ul>
           </div>
 
           <div>
-            <h3 className="text-xl font-bold mb-4 flex items-center gap-2 text-white">
+            <h3 className="text-xl font-bold mb-4 flex items-center gap-2">
               <span className="w-2 h-8 bg-purple-500 rounded-full"></span>
-              Competencies
+              Workflow pillars
             </h3>
-            <ul className="space-y-3">
+            <ul className="space-y-3 text-gray-300">
               {[
-                "Full-Stack Development",
-                "Systems Architecture",
-                "Project Management",
-                "Team Leadership",
-                "Business Operations",
-                "Public Speaking",
-              ].map((skill) => (
-                <li
-                  key={skill}
-                  className="flex items-center gap-3 text-gray-300"
-                >
-                  <svg
-                    className="text-purple-500 w-5 h-5 flex-shrink-0"
-                    fill="none"
-                    stroke="currentColor"
-                    viewBox="0 0 24 24"
-                  >
-                    <path
-                      strokeLinecap="round"
-                      strokeLinejoin="round"
-                      strokeWidth="2"
-                      d="M5 13l4 4L19 7"
-                    ></path>
-                  </svg>
-                  {skill}
+                {
+                  name: "React Server Components",
+                  note: "Lean into server-first rendering for speed and less client-side glue.",
+                },
+                {
+                  name: "Convex + Supabase",
+                  note: "Pick the backend that fits the data model and skip the ops overhead.",
+                },
+                {
+                  name: "GitHub + Actions",
+                  note: "Simple automation for linting, previews, and deploys.",
+                },
+              ].map((item) => (
+                <li key={item.name} className="flex flex-col">
+                  <span className="font-semibold text-white">{item.name}</span>
+                  <span className="text-sm text-gray-400">{item.note}</span>
                 </li>
               ))}
             </ul>
@@ -308,64 +352,46 @@ export const cards: CardData[] = [
       </div>
     ),
   },
+  */
   {
     id: "hobbies",
     title: "Lifestyle",
-    subtitle: "Life Beyond the Screen",
-    description:
-      "When I'm not coding or working, I love to be outdoors!",
-    color: "#1e40af", // Blue-800 (dark enough for WCAG AA contrast with white)
+    subtitle: "Some hobbies that keep me busy",
+    description: "Things I love to do!",
+    color: "#262626", // Neutral-800
     textColor: "#ffffff",
     longDescription: (
-      <div className="space-y-10">
-        <div className="prose prose-invert max-w-none">
-          <p className="text-xl text-white/95 leading-relaxed">
-            I&apos;ve always loved being outdoors. It&apos;s a great way to
-            disconnect from the digital world and reconnect with nature.
-          </p>
+      <div className="space-y-8 text-white">
+        <div className="space-y-3">
+          <h3 className="text-3xl md:text-4xl font-bold leading-tight">
+            When I'm
+          </h3>
         </div>
 
-        <div className="grid grid-cols-1 gap-6">
-          <div className="bg-black/20 border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition-colors">
-            <div className="flex items-center gap-4 mb-3">
-              <span className="text-4xl">🤿</span>
-              <h3 className="text-2xl font-bold text-white">Scuba Diving</h3>
+        <div className="grid gap-6 md:grid-cols-2">
+          {[
+            {
+              title: "Scuba diving",
+              desc: "One of my favorite things—truly indescribable until you try it, and breathe underwater.",
+            },
+            {
+              title: "Surfing",
+              desc: "Such an amazing way to get out into the ocean. Super challenging, humbling, and a great workout.",
+            },
+            {
+              title: "Golfing",
+              desc: "A great mental challenge, and a fantastic way to get outdoors with friends and family.",
+            },
+            {
+              title: "Skiing",
+              desc: "My favorite part of the winter months. I wish you could do it year-round.",
+            },
+          ].map((hobby) => (
+            <div key={hobby.title} className="border border-white/10 rounded-2xl p-5 bg-white/5">
+              <h4 className="text-xl font-semibold mb-2 text-white">{hobby.title}</h4>
+              <p className="text-gray-400 text-sm leading-relaxed">{hobby.desc}</p>
             </div>
-            <p className="text-white/90 leading-relaxed text-lg">
-              There&apos;s nothing quite like scuba diving - it&apos;s almost indescribable. Being underwater among the marine life is a fantastic experience that I would encourage everyone to try!
-            </p>
-          </div>
-
-          <div className="bg-black/20 border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition-colors">
-            <div className="flex items-center gap-4 mb-3">
-              <span className="text-4xl">🏄‍♂️</span>
-              <h3 className="text-2xl font-bold text-white">Surfing</h3>
-            </div>
-            <p className="text-white/90 leading-relaxed text-lg">
-              Surfing teaches you patience for sure. But it is a great way to get into the ocean and explore!
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            <div className="bg-black/20 border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition-colors">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-3xl">⛷️</span>
-                <h3 className="text-xl font-bold text-white">Skiing</h3>
-              </div>
-              <p className="text-white/80 text-sm">
-                Skiing is one of my favorite things to do - I just don't get to do it as much as I would like!
-              </p>
-            </div>
-            <div className="bg-black/20 border border-white/10 p-6 rounded-2xl hover:bg-white/5 transition-colors">
-              <div className="flex items-center gap-3 mb-2">
-                <span className="text-3xl">⛳️</span>
-                <h3 className="text-xl font-bold text-white">Golfing</h3>
-              </div>
-              <p className="text-white/80 text-sm">
-                A mental puzzle disguised as a sport. But, a great way to have fun outdoors with friends.
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
       </div>
     ),
@@ -374,145 +400,70 @@ export const cards: CardData[] = [
     id: "exploring",
     title: "Radar",
     subtitle: "Tech & Tools I Love",
-    description:
-      "A list of software and platforms that I swear by.",
-    color: "#6d28d9", // Violet-700 (darker for better contrast)
+    description: "I love trying new tools and software to make my life easier! Here are some of my favorites.",
+    color: "#171717", // Neutral-900
     textColor: "#ffffff",
     longDescription: (
-      <div className="space-y-8">
-        <div className="prose prose-invert max-w-none">
-          <p className="text-xl text-gray-200 leading-relaxed">
-            I love trying out new tools - it is one of my favorite things. These are some of the products that I love.
-          </p>
-        </div>
+      <div className="space-y-8 text-white">
+        <p className="text-lg text-gray-300 max-w-2xl">
+          No rankings or filler—just the tools that have earned a spot in my day-to-day work.
+        </p>
 
         <div className="space-y-4">
           {[
             {
               name: "Howie",
-              desc: "The best AI secretary out there!",
+              tag: "Secretary",
               url: "https://evantaylor.link/howie",
-              icon: "📅",
+              note: "The best way to manage a calendar, and stay on top of my schedule.",
             },
             {
               name: "Superhuman",
-              desc: "The fastest email experience ever made - saves a bunch of time.",
+              tag: "Email",
               url: "https://evantaylor.link/superhuman",
-              icon: "⚡",
+              note: "Lightning fast, AI-native email that makes getting through the inbox even faster.",
             },
             {
               name: "Zed",
-              desc: "The best code editor I have ever used.",
+              tag: "Editor",
               url: "https://evantaylor.link/zed",
-              icon: "💻",
-            },
-            {
-              name: "Poke",
-              desc: "A lovely and intelligent AI tool over iMessage",
-              url: "https://evantaylor.link/poke",
-              icon: "🌴",
+              note: "The best (and fastest) code editor I've ever used.",
             },
             {
               name: "Convex",
-              desc: "The open-source reactive database for app developers.",
+              tag: "Backend",
               url: "https://evantaylor.link/convex",
-              icon: "💾",
-            },
-            {
-              name: "Zo",
-              desc: "Get your very own personal AI server and chat with it.",
-              url: "https://evantaylor.link/zo",
-              icon: "☁️",
+              note: "My new favorite backend for all of my projects.",
             },
             {
               name: "Beside",
-              desc: "The AI assistant that saves me 2+ hours a day.",
-              icon: "🤖",
-              // We'll use this to detect if it's Beside
-              isBeside: true,
+              tag: "AI Receptionist/Phone System",
+              url: "https://evantaylor.link/beside",
+              note: "Amazing AI-native phone system. Use invite code: qPGXykfX.",
             },
-          ].map((tool, i) => {
-            if (tool.isBeside) {
-              return (
-                <details
-                  key={i}
-                  className="group bg-black/20 border border-white/10 rounded-2xl hover:bg-white/10 transition-all overflow-hidden"
-                >
-                  <summary className="flex items-center gap-4 p-4 cursor-pointer list-none [&::-webkit-details-marker]:hidden">
-                    <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                      {tool.icon}
-                    </div>
-                    <div className="flex-1 text-left">
-                      <div className="flex items-center gap-2">
-                        <h3 className="text-lg font-bold text-white">
-                          {tool.name}
-                        </h3>
-                        <span className="opacity-0 group-hover:opacity-100 transition-opacity text-blue-400 text-sm">
-                          Get 14 Days Free
-                        </span>
-                      </div>
-                      <p className="text-gray-400 text-sm leading-snug">
-                        {tool.desc}
-                      </p>
-                    </div>
-                  </summary>
-                  <div className="px-4 pb-4 pt-0 pl-[4.5rem]">
-                    <ol className="list-decimal list-inside space-y-2 text-gray-300 text-sm">
-                      <li>
-                        <a
-                          href="https://evantaylor.link/beside"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-blue-400 hover:underline"
-                        >
-                          Download the app
-                        </a>
-                      </li>
-                      <li>
-                        Choose{" "}
-                        <strong className="text-white">
-                          Someone recommended it
-                        </strong>{" "}
-                        when asked how you heard about it
-                      </li>
-                      <li>
-                        Enter code{" "}
-                        <code className="bg-blue-500/20 text-blue-300 px-2 py-1 rounded font-mono font-bold">
-                          qPGXykfX
-                        </code>{" "}
-                        to unlock the trial
-                      </li>
-                    </ol>
-                  </div>
-                </details>
-              );
-            }
-
-            return (
-              <a
-                key={i}
-                href={tool.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center gap-4 bg-black/20 border border-white/10 p-4 rounded-2xl hover:bg-white/10 transition-all group"
-              >
-                <div className="w-12 h-12 rounded-full bg-white/5 flex items-center justify-center text-2xl group-hover:scale-110 transition-transform">
-                  {tool.icon}
-                </div>
-                <div className="flex-1">
-                  <div className="flex items-center gap-2">
-                    <h3 className="text-lg font-bold text-white">{tool.name}</h3>
-                    <span className="opacity-0 group-hover:opacity-100 transition-opacity text-gray-400 text-sm">
-                      ↗
-                    </span>
-                  </div>
-                  <p className="text-gray-400 text-sm leading-snug">
-                    {tool.desc}
-                  </p>
-                </div>
-              </a>
-            );
-          })}
+            {
+              name: "Poke",
+              tag: "iMessage AI",
+              url: "https://evantaylor.link/poke",
+              note: "Super fun AI assistant that you interact with over iMessage.",
+            },
+          ].map((tool) => (
+            <a
+              key={tool.name}
+              href={tool.url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="block border border-white/10 rounded-2xl p-5 hover:border-white/40 transition-colors bg-white/[0.03]"
+            >
+              <div className="flex items-baseline justify-between gap-4">
+                <h4 className="text-xl font-semibold">{tool.name}</h4>
+                <span className="text-xs text-gray-500 uppercase tracking-widest">
+                  {tool.tag}
+                </span>
+              </div>
+              <p className="text-sm text-gray-400 mt-2 leading-relaxed">{tool.note}</p>
+            </a>
+          ))}
         </div>
       </div>
     ),

@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect, useCallback, useRef } from "react";
-import { motion, AnimatePresence, PanInfo, useMotionValue, useTransform, useSpring, MotionValue } from "framer-motion";
+import { motion, AnimatePresence, PanInfo, useMotionValue, useTransform, useSpring, MotionValue, useDragControls } from "framer-motion";
 import { cards as initialCards, CardData } from "../lib/cards";
 
 // --- Animation Guidelines & Constants ---
@@ -9,9 +9,9 @@ import { cards as initialCards, CardData } from "../lib/cards";
 const EASE_OUT_QUART: [number, number, number, number] = [0.165, 0.84, 0.44, 1];
 const TRANSITION_SPRING = {
   type: "spring" as const,
-  stiffness: 200,
+  stiffness: 230,
   damping: 25,
-  mass: 0.8
+  mass: 1
 };
 
 // Simple Close Icon
@@ -43,7 +43,12 @@ export default function CardStack({ initialActiveId }: { initialActiveId?: strin
     return newCards;
   });
   const [selectedId, setSelectedId] = useState<string | null>(initialActiveId || null);
+  const [isLoaded, setIsLoaded] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    setIsLoaded(true);
+  }, []);
 
   // Mouse position for spotlight and tilt
   const mouseX = useMotionValue(0);
@@ -138,16 +143,42 @@ export default function CardStack({ initialActiveId }: { initialActiveId?: strin
            style={{ backgroundImage: `url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.65' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E")` }} 
       />
       
+      {/* Liquid Glass Filter */}
+      <svg style={{ position: 'absolute', width: 0, height: 0 }}>
+        <defs>
+          <filter id="liquid">
+            <feTurbulence type="fractalNoise" baseFrequency="0.015" numOctaves="2" result="noise"/>
+            <feDisplacementMap in="SourceGraphic" in2="noise" scale="30" xChannelSelector="R" yChannelSelector="G" />
+            <feGaussianBlur in="SourceGraphic" stdDeviation="0.5" />
+          </filter>
+          <filter id="chromatic">
+             <feOffset in="SourceGraphic" dx="2" dy="0" result="red" />
+             <feOffset in="SourceGraphic" dx="-2" dy="0" result="blue" />
+             <feBlend mode="screen" in="red" in2="blue" />
+          </filter>
+        </defs>
+      </svg>
+
       {/* Spotlight Effect */}
       <div 
         className="absolute inset-0 pointer-events-none z-0 transition-opacity duration-500"
         style={{
-            background: `radial-gradient(600px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(255,255,255,0.06), transparent 40%)`
+            background: `radial-gradient(800px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(255,255,255,0.08), transparent 40%)`,
+            filter: "url(#liquid)"
+        }}
+      />
+
+      {/* Chromatic Aberration Outline */}
+      <div 
+        className="absolute inset-0 pointer-events-none z-[5] mix-blend-overlay opacity-50"
+        style={{
+            background: `radial-gradient(400px circle at ${spotlightPos.x}px ${spotlightPos.y}px, rgba(255,255,255,0.1), transparent 40%)`,
+             filter: "url(#chromatic)"
         }}
       />
       
       {/* Navigation Hints */}
-      <div className="absolute top-8 left-0 right-0 flex justify-center pointer-events-none z-10">
+      {/* <div className="absolute top-8 left-0 right-0 flex justify-center pointer-events-none z-10">
          <motion.div 
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -156,11 +187,16 @@ export default function CardStack({ initialActiveId }: { initialActiveId?: strin
          >
             Scroll / Drag to Navigate
          </motion.div>
-      </div>
+      </div> */}
 
       {/* Card Container */}
       <div className="relative w-full max-w-6xl h-[600px] flex items-center justify-center perspective-1000">
         <div className="relative w-full h-full flex items-center justify-center transform-style-3d">
+            {/* 
+               Use AnimatePresence with mode="popLayout" or similar isn't strictly needed here because we are re-ordering an array in place.
+               However, if we wanted to remove cards, we would need it.
+            */}
+            <AnimatePresence>
             {cards.map((card, index) => {
                 return (
                     <Card 
@@ -171,18 +207,27 @@ export default function CardStack({ initialActiveId }: { initialActiveId?: strin
                         activeId={selectedId}
                         mouseX={smoothMouseX}
                         mouseY={smoothMouseY}
+                        isLoaded={isLoaded}
                         onClick={() => {
                             if (index === 0) setSelectedId(card.id);
                             else if (index === 1) moveCardToBack();
                         }}
                         onDragEnd={(info) => {
                             if (index === 0) {
-                                if (Math.abs(info.offset.x) > 100) moveCardToBack();
+                                const swipeThreshold = 100;
+                                const velocityThreshold = 500;
+                                if (
+                                    Math.abs(info.offset.x) > swipeThreshold || 
+                                    Math.abs(info.velocity.x) > velocityThreshold
+                                ) {
+                                    moveCardToBack();
+                                }
                             }
                         }}
                     />
                 );
             })}
+            </AnimatePresence>
         </div>
       </div>
 
@@ -205,6 +250,7 @@ function Card({
   activeId,
   mouseX,
   mouseY,
+  isLoaded,
   onClick,
   onDragEnd
 }: { 
@@ -214,6 +260,7 @@ function Card({
   activeId: string | null;
   mouseX: MotionValue<number>;
   mouseY: MotionValue<number>;
+  isLoaded: boolean;
   onClick: () => void; 
   onDragEnd: (info: PanInfo) => void;
 }) {
@@ -237,26 +284,13 @@ function Card({
   // Entry Animation
   const initialY = 600 + (index * 100);
   
-  // We need to use useTransform to conditionally apply rotation logic
-  // because `animate` prop doesn't like mixing MotionValues and primitive numbers directly in a way that changes between renders
-  // Instead, let's just pass the motion value always, but flat-line it if not front.
-  
-  // Construct a derived value that is either the interactive tilt or the static tilt
-  const finalRotateX = useTransform(rotateX, (latest) => {
-      return isFront && !activeId ? latest : staticRotateX;
-  });
-  
-  const finalRotateY = useTransform(rotateY, (latest) => {
-      return isFront && !activeId ? latest : 0;
-  });
-
   return (
     <motion.div
       layoutId={`card-${card.id}`}
       onClick={onClick}
       drag={isFront && !activeId ? "x" : false}
       dragConstraints={{ left: 0, right: 0 }}
-      dragElastic={0.1}
+      dragElastic={0.2}
       onDragEnd={(_, info) => onDragEnd(info)}
       
       initial={
@@ -274,16 +308,14 @@ function Card({
         scale: scale,
         opacity: opacity,
         zIndex: zIndex,
-        // We remove rotateX/Y from here and put them in style
-        // animate handles layout/position transitions
-        // style handles the continuous tilt
+        rotateX: isFront ? 0 : staticRotateX,
+        rotateY: 0,
         filter: `brightness(${brightness})`,
       }}
       
       style={{
-        // Apply rotations via style to handle MotionValues correctly
-        rotateX: finalRotateX,
-        rotateY: finalRotateY,
+        rotateX: isFront && !activeId ? rotateX : undefined,
+        rotateY: isFront && !activeId ? rotateY : undefined,
         backgroundColor: card.color,
         color: card.textColor,
         boxShadow: "0 25px 50px -12px rgba(0, 0, 0, 0.5)",
@@ -303,29 +335,32 @@ function Card({
       
       transition={{
         ...TRANSITION_SPRING,
-        delay: index * 0.1 
+        delay: isLoaded ? 0 : index * 0.1 
       }}
       
       className="absolute w-full max-w-[360px] h-[480px] rounded-[32px] shadow-2xl origin-center will-change-transform"
     >
          {/* Glossy highlight */}
         <motion.div 
-            className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/20 to-transparent opacity-100 pointer-events-none z-10" 
+            className="absolute inset-0 rounded-[32px] bg-gradient-to-br from-white/20 to-transparent opacity-100 pointer-events-none z-10 mix-blend-overlay" 
             style={{
                 background: useTransform(
                     mouseX, 
                     [-1, 1], 
-                    ["linear-gradient(105deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%)", 
-                     "linear-gradient(65deg, rgba(255,255,255,0.3) 0%, rgba(255,255,255,0) 60%)"]
-                )
+                    ["linear-gradient(105deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)", 
+                     "linear-gradient(65deg, rgba(255,255,255,0.4) 0%, rgba(255,255,255,0) 60%)"]
+                ),
+                filter: "url(#liquid)"
             }}
         />
         
       <div className="p-8 flex flex-col h-full relative z-0 transform-style-3d">
         {/* Floating content for parallax depth */}
         <motion.div 
-            layoutId={`card-content-${card.id}`} 
             className="flex-1 pointer-events-none"
+            initial={{ opacity: 1 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0, transition: { duration: 0.1 } }}
             style={{ 
                 z: 20, 
                 transform: isFront ? "translateZ(30px)" : "translateZ(0px)" 
@@ -334,13 +369,11 @@ function Card({
             {/* Header */}
             <div className="mb-8">
                  <motion.p 
-                    layoutId={`subtitle-${card.id}`} 
                     className="text-white/50 text-sm font-bold uppercase tracking-widest mb-2"
                 >
                     {card.subtitle}
                 </motion.p>
                 <motion.h2 
-                    layoutId={`title-${card.id}`} 
                     className="text-4xl font-bold leading-tight tracking-tight"
                 >
                     {card.title}
@@ -348,7 +381,7 @@ function Card({
             </div>
             
             {/* Body */}
-            <motion.div layoutId={`desc-${card.id}`} className="text-white/80 text-lg leading-relaxed">
+            <motion.div className="text-white/80 text-lg leading-relaxed">
                 {card.description}
             </motion.div>
         </motion.div>
@@ -377,6 +410,7 @@ function Card({
 
 function ExpandedCard({ card, onClose }: { card: CardData; onClose: () => void }) {
   const cardRef = useRef<HTMLDivElement>(null);
+  const dragControls = useDragControls();
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
@@ -406,7 +440,17 @@ function ExpandedCard({ card, onClose }: { card: CardData; onClose: () => void }
         ref={cardRef}
         layoutId={`card-${card.id}`}
         tabIndex={-1}
-        className="relative w-full max-w-4xl h-full max-h-[90vh] flex flex-col rounded-[40px] shadow-2xl overflow-hidden bg-neutral-900 border border-white/10 outline-none"
+        drag="y"
+        dragControls={dragControls}
+        dragListener={false}
+        dragConstraints={{ top: 0, bottom: 0 }}
+        dragElastic={{ top: 0, bottom: 0.2 }}
+        onDragEnd={(event, info) => {
+          if (info.offset.y > 100 && info.velocity.y > 0) {
+            onClose();
+          }
+        }}
+        className="relative w-full max-w-6xl h-full max-h-[90vh] flex flex-col rounded-[40px] shadow-2xl overflow-hidden bg-neutral-900 border border-white/10 outline-none"
         style={{ 
           backgroundColor: card.color,
           color: card.textColor 
@@ -425,31 +469,46 @@ function ExpandedCard({ card, onClose }: { card: CardData; onClose: () => void }
           <CloseIcon />
         </motion.button>
 
-        <div className="flex flex-col md:flex-row h-full">
+        <div className="flex flex-col md:flex-row h-full overflow-y-auto md:overflow-hidden custom-scrollbar">
             {/* Sidebar / Header Region */}
-            <div className="md:w-1/3 p-8 pt-20 md:p-12 md:pt-12 flex flex-col relative z-10 bg-black/10">
-                 <motion.div layoutId={`card-content-${card.id}`} className="flex-1">
+            <div 
+              className="md:w-[400px] p-8 pt-20 md:p-12 md:pt-12 flex flex-col relative z-10 bg-black/10 flex-shrink-0 cursor-grab active:cursor-grabbing"
+              onPointerDown={(e) => dragControls.start(e)}
+            >
+                {/* Mobile Drag Handle */}
+                <div className="md:hidden absolute top-3 left-1/2 -translate-x-1/2 w-12 h-1.5 bg-white/20 rounded-full" />
+
+                 <div className="flex-1">
                     <motion.p 
-                        layoutId={`subtitle-${card.id}`} 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1, duration: 0.4, ease: EASE_OUT_QUART }}
                         className="text-blue-400 text-sm font-bold uppercase tracking-widest mb-4"
                     >
                         {card.subtitle}
                     </motion.p>
                     <motion.h2 
-                        layoutId={`title-${card.id}`} 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.15, duration: 0.4, ease: EASE_OUT_QUART }}
                         className="text-4xl md:text-5xl font-bold mb-6 tracking-tight leading-tight"
                     >
                         {card.title}
                     </motion.h2>
                     
-                     <motion.div layoutId={`desc-${card.id}`} className="text-white/60 text-lg leading-relaxed font-medium">
+                     <motion.div 
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.2, duration: 0.4, ease: EASE_OUT_QUART }}
+                        className="text-white/60 text-lg leading-relaxed font-medium"
+                    >
                         {card.description}
                     </motion.div>
-                 </motion.div>
+                 </div>
             </div>
             
             {/* Main Content Region */}
-           <div className="flex-1 p-8 md:p-12 md:pt-24 overflow-y-auto custom-scrollbar bg-black/20 relative z-10">
+           <div className="flex-1 p-8 md:p-12 md:pt-24 overflow-visible md:overflow-y-auto custom-scrollbar bg-black/20 relative z-10">
                 <motion.div 
                     initial={{ opacity: 0, y: 20, filter: "blur(4px)" }}
                     animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
