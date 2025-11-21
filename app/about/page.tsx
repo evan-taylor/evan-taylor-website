@@ -1,4 +1,4 @@
-import CardStack from "../../components/card-stack";
+import CardStack from "../../components/CardStack";
 
 export default function About() {
   return (
